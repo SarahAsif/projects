@@ -1,0 +1,11 @@
+body{
+  text-align: center;
+  background-image: url('image.jpg');
+  background-color: lightgray;
+  height: 10vh;
+  font-size: 30px;
+  background-size: cover;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+  }
