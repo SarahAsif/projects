@@ -28,21 +28,26 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-  position: relative;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: -15rem;
-
+  justify-content: space-between;
+  align-items: space-between;
+  margin-left: 1rem;
+  
   div {
-    position: relative;
-    width: 500px;
+position: relative;
+    width: 30rem;
+    margin-left:2rem;
     max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
+    @media (max-width: 838px) {
+      position:absolute;
+      display:flex;
+      text-align:center;
+      align-items:center;
+      justify-content:center;
+}
+ }
 
   input {
     border: none;

@@ -10,10 +10,10 @@ function Cuisine() {
 
   const getCuisine = async (name) => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}`
+      `https://json.nitroxis.com/recipes?cuisine=${params.type}`
     );
     const recipes = await data.json();
-    setCuisine(recipes.results);
+    setCuisine(recipes);
   };
 
   useEffect(() => {
@@ -32,8 +32,8 @@ function Cuisine() {
         return (
           <Card key={recipe.id}>
             <Link to={`/recipes/${recipe.id}`}>
-              <img src={recipe.image} alt={recipe.title} />
-              <h4>{recipe.title}</h4>
+              <img src={recipe.imageURL} alt={recipe.name} />
+              <h4>{recipe.name}</h4>
             </Link>
           </Card>
         );
@@ -43,11 +43,12 @@ function Cuisine() {
 }
 
 const Grid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 2rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  text-align:center;
+  display:flex;
+  flex-wrap: wrap;
+  margin:3rem;
+  justify-content: space-around;
+  align-items:center;
   @media (max-width: 865px) {
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
@@ -55,8 +56,9 @@ const Grid = styled(motion.div)`
 
 const Card = styled.div`
   img {
-    width: 90%;
-    border-radius: 2rem;
+    width: 300px;
+    border-radius: 1rem;
+    height:300px;
   }
 
   a {
@@ -64,8 +66,7 @@ const Card = styled.div`
   }
 
   h4 {
-    text-align: center;
-    padding: 1rem;
+    margin:1rem;
   }
 `;
 

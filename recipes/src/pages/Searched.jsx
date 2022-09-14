@@ -8,10 +8,10 @@ function Searched() {
 
 	const getSearched = async name => {
 		const data = await fetch(
-			`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`
+			`https://json.nitroxis.com/recipes?${params.search}`
 		);
 		const recipes = await data.json();
-		setSearchedRecipes(recipes.results);
+		setSearchedRecipes(recipes);
 	};
 
 	useEffect(() => {
@@ -24,8 +24,8 @@ function Searched() {
 				return (
 					<Link to={`/recipe/${recipe.id}`}>
 						<Card key={recipe.id}>
-							<img src={recipe.image} alt={recipe.title} />
-							<h4>{recipe.title}</h4>
+							<img src={recipe.imageURL} alt={recipe.name} />
+							<h4>{recipe.name}</h4>
 						</Card>
 					</Link>
 				);

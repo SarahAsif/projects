@@ -14,7 +14,6 @@ function Recipe() {
         `https://json.nitroxis.com/recipes/${params.name}`);
       const detailData = await data.json();
       setDetails(detailData);
-      console.log(detailData);
     };
     fetchDetails();
   }, [params.name]);
