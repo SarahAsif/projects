@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <Style>
+        body{
+            background-color:#A0AECD;
+            color: #40495e;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;  
+            font-size: 32px;
+            overflow: hidden;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+        
+        .top{
+            margin: 1px;
+            font-family: Candara
+        }
+        h1 span {
+  position: relative;
+  top: 20px;
+  display: inline-block;
+  -webkit-animation: bounce 0.3s ease infinite alternate;
+  font-size: 80px;
+  color: #fff;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+    0 5px 0 #ccc, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
+    0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
+    z-index: 30;
+}
+h1 span:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+  
+}
+
+h1 span:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+}
+
+h1 span:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+}
+
+h1 span:nth-child(5) {
+  -webkit-animation-delay: 0.4s;
+}
+
+h1 span:nth-child(6) {
+  -webkit-animation-delay: 0.5s;
+}
+
+h1 span:nth-child(7) {
+  -webkit-animation-delay: 0.6s;
+}
+
+h1 span:nth-child(8) {
+  -webkit-animation-delay: 0.2s;
+}
+
+h1 span:nth-child(9) {
+  -webkit-animation-delay: 0.3s;
+}
+
+h1 span:nth-child(10) {
+  -webkit-animation-delay: 0.4s;
+}
+
+h1 span:nth-child(11) {
+  -webkit-animation-delay: 0.5s;
+}
+
+h1 span:nth-child(12) {
+  -webkit-animation-delay: 0.6s;
+}
+
+h1 span:nth-child(13) {
+  -webkit-animation-delay: 0.7s;
+}
+
+h1 span:nth-child(14) {
+  -webkit-animation-delay: 0.8s;
+}
+
+        @-webkit-keyframes bounce {
+  100% {
+    top: -10px;
+    text-shadow: 0 1px 0 grey, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+      0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+      0 50px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+a{
+            color:#2b3242;
+            text-decoration: none;
+            transition: all .2s;          
+}
+
+a:hover{
+            color: black;
+            font-weight: 400;
+            transition-delay: .01s;
+            text-shadow: 1px 1px 0px black;
+            
+        }
+.body{
+            border-radius: 6px;
+            background: #A0AECD;
+            box-shadow:  7px 7px 14px #9aa7c5,
+             -7px -7px 14px #a6b5d5;
+             margin: 10px;
+            font-size: 23px;
+            
+            padding: 20px;
+            line-height: 34px;
+            z-index: 7;   
+        }
+ 
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    }
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+    </Style>
+</head>
+<body>
+    <div class="top">
+        <h1>
+            <span>S</span>
+            <span>A</span>
+            <span>R</span>
+            <span>A</span>
+            <span>H</span>
+            <span>'s</span>
+            <span>&nbsp;</span>
+            <span>P</span>
+            <span>R</span>
+            <span>O</span>
+            <span>J</span>
+            <span>E</span>
+            <span>C</span>
+            <span>T</span>
+            <span>S</span>
+        </h1>    
+        </div>
+        <div>
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    <div class="body">
+        <div class="inner">
+        <div><a href="https://sarah.nitroxis.org/analogueclock/">Analog-Clock</a></div>
+        <div><a href="https://sarah.nitroxis.org/digitalclock/">Digital-Clock</a></div>
+        <div><a href="https://sarah.nitroxis.org/calc/">Calculator</a></div>
+        <div><a href="https://sarah.nitroxis.org/button/">Button effect</a></div>
+        <div><a href="https://sarah.nitroxis.org/wordcount/">Word Counter</a></div>
+        <div><a href="https://sarah.nitroxis.org/charactercount">Character Counter</a></div>
+        <div><a href="https://sarah.nitroxis.org/todo">To-do List in ReactJS</a></div>
+        <div><a href="https://sarah.nitroxis.org/toaster/">Toaster Notifications</a></div>
+        <div><a href="https://sarah.nitroxis.org/tictac/">Tic tac Toe in ReactJS</a></div>
+        <div><a href="https://sarah.nitroxis.org/quiz/">Math Multiplication Quiz</a></div>
+        <div><a href="https://sarah.nitroxis.org/meals">Meals Order App</a></div>
+        <div><a href="https://sarah.nitroxis.org/form">Form</a></div>
+        <div><a href="https://sarah.nitroxis.org/expenses/">Expenses App in ReactJS</a></div>
+    </div>
+    
+</div>
+</body>
+</html>

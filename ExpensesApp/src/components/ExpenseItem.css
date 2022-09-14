@@ -1,0 +1,85 @@
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    background-color:  #0049B7;
+  }
+  
+  .expense-item__description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-flow: column-reverse;
+    justify-content: flex-start;
+    flex: 1;
+  }
+  
+  .expense-item h2 {
+    color: #3a3a3a;
+    font-size: 1rem;
+    flex: 1;
+    margin: 0 1rem;
+    color: white;
+  }
+  
+  @media (min-width: 580px) {
+    .expense-item__description {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+    }
+  }  
+    .expense-item__description h2 {
+      font-size: 1.25rem;
+    }
+  
+    .expense-item__price {
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    padding: 10px 10px;
+    border: none ;
+    background-color: #fff685;
+    color: black;
+    border-radius: 1px;
+    font-weight: 900;
+    }
+
+  .expense-item__price:hover,
+  .expense-item__price :active {
+    background-color: #f3e63e;
+    border-color: #f3e63e;
+  }
+
+  .expense-date__month {
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  
+  .expense-date__year {
+    font-size: 0.75rem;
+  }
+  
+  .expense-date__day {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .button{
+    font: inherit;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    background-color: #d61d4e;
+    color: white;
+    border-radius: 1px;
+    margin-right: 1rem;
+  }
+  .button:hover,
+  .button:active {
+    background-color: #b41741;
+    border-color: #b41741;
+  }

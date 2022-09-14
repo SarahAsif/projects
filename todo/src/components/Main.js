@@ -15,6 +15,11 @@ const getLocalItmes = () => {
 };
 
 const Main = () => {
+  const something = (event) => {
+    if (event.keyCode === 13) {
+      console.log("enter");
+    }
+  };
   //Usestate lines
   const [inputData, setInputData] = useState("");
   const [items, setItems] = useState(getLocalItmes());
@@ -34,7 +39,7 @@ const Main = () => {
         })
       );
       setToggleSubmit(true);
-
+      something(true);
       setInputData("");
 
       setIsEditItem(null);
@@ -53,6 +58,7 @@ const Main = () => {
     });
 
     setItems(updateditems);
+    setInputData("");
   };
 
   const editItem = (id) => {
@@ -78,74 +84,76 @@ const Main = () => {
   }, [items]);
 
   return (
-    <div className="main">
-      <div className="left">
-        <div className="parent">
-          <div className="svg">
-            <h1> To-Do List</h1>
-            <svg>
-              <defs>
-                <filter id="flyOn">
-                  <feTurbulence
-                    id="turbulence"
-                    baseFrequency="0.02"
-                    numOctaves="3"
-                    result="noise"
-                    seed="3"
-                  />
-                  <feDisplacementMap
-                    in="SourceGraphic"
-                    in2="noise"
-                    scale="15"
-                  />
-                </filter>
-              </defs>
-            </svg>
+    <form>
+      <div className="main">
+        <div className="left">
+          <div className="parent">
+            <div className="svg">
+              <h1> To-Do List</h1>
+              <svg>
+                <defs>
+                  <filter id="flyOn">
+                    <feTurbulence
+                      id="turbulence"
+                      baseFrequency="0.02"
+                      numOctaves="3"
+                      result="noise"
+                      seed="3"
+                    />
+                    <feDisplacementMap
+                      in="SourceGraphic"
+                      in2="noise"
+                      scale="15"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </div>
+            <input
+              placeholder="Add Items"
+              value={inputData}
+              onChange={(e) => setInputData(e.target.value)}
+            />
           </div>
-          <input
-            placeholder="Add Items"
-            value={inputData}
-            onChange={(e) => setInputData(e.target.value)}
-          />
-        </div>
-        <div className="child">
-          {toggleSubmit ? (
-            <button onClick={addItem}>Add</button>
-          ) : (
-            <button onClick={addItem}>Edit</button>
-          )}
+          <div className="child">
+            {toggleSubmit ? (
+              <button onClick={addItem}>Add</button>
+            ) : (
+              <button onClick={addItem}>Edit</button>
+            )}
 
-          <button onClick={removeAll}>Remove All</button>
+            <button onClick={removeAll}>Remove All</button>
+          </div>
+        </div>
+        <div className="right">
+          <div className="container">
+            {items.map((elem) => {
+              return (
+                <div key={elem.id} className="bacha">
+                  <span>{elem.name}</span>
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      onClick={() => editItem(elem.id)}
+                    >
+                      <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12H20A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4V2M18.78,3C18.61,3 18.43,3.07 18.3,3.2L17.08,4.41L19.58,6.91L20.8,5.7C21.06,5.44 21.06,5 20.8,4.75L19.25,3.2C19.12,3.07 18.95,3 18.78,3M16.37,5.12L9,12.5V15H11.5L18.87,7.62L16.37,5.12Z" />
+                    </svg>
+                    <svg
+                      onClick={() => deleteItem(elem.id)}
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22 2 17.5 2 12 6.5 2 12 2M12 4C10.1 4 8.4 4.6 7.1 5.7L18.3 16.9C19.3 15.5 20 13.8 20 12C20 7.6 16.4 4 12 4M16.9 18.3L5.7 7.1C4.6 8.4 4 10.1 4 12C4 16.4 7.6 20 12 20C13.9 20 15.6 19.4 16.9 18.3Z" />
+                    </svg>
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-      <div className="right">
-        <div className="container">
-          {items.map((elem) => {
-            return (
-              <div key={elem.id} className="bacha">
-                <span>{elem.name}</span>
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    onClick={() => editItem(elem.id)}
-                  >
-                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12H20A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4V2M18.78,3C18.61,3 18.43,3.07 18.3,3.2L17.08,4.41L19.58,6.91L20.8,5.7C21.06,5.44 21.06,5 20.8,4.75L19.25,3.2C19.12,3.07 18.95,3 18.78,3M16.37,5.12L9,12.5V15H11.5L18.87,7.62L16.37,5.12Z" />
-                  </svg>
-                  <svg
-                    onClick={() => deleteItem(elem.id)}
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22 2 17.5 2 12 6.5 2 12 2M12 4C10.1 4 8.4 4.6 7.1 5.7L18.3 16.9C19.3 15.5 20 13.8 20 12C20 7.6 16.4 4 12 4M16.9 18.3L5.7 7.1C4.6 8.4 4 10.1 4 12C4 16.4 7.6 20 12 20C13.9 20 15.6 19.4 16.9 18.3Z" />
-                  </svg>
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
+    </form>
   );
 };
 
