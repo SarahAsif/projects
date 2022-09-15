@@ -34,24 +34,27 @@ function Searched() {
 	);
 }
 const Grid = styled.div`
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-	grid-gap: 3rem;
+text-align:center;
+display:flex;
+flex-wrap: wrap;
+margin:3rem;
+justify-content: space-around;
+align-items:center;
+
 `;
 
 const Card = styled.div`
 	img {
-		width: 100%;
 		border-radius: 2rem;
+		width: 300px;
+    border-radius: 1rem;
+    height:300px;
+	
 	}
-
-	a {
-		text-decoration: none;
-	}
-
 	h4 {
-		text-align: center;
-		padding: 1rem;
+		margin: 1rem;
+		color:white;
+		
 	}
 `;
 export default Searched;

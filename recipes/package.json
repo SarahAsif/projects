@@ -1,6 +1,7 @@
 {
   "name": "recipes",
   "version": "0.1.0",
+  "homepage": "/recipes",
   "description": "this is a recipe app",
   "private": true,
   "dependencies": {

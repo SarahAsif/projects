@@ -31,7 +31,7 @@ function Cuisine() {
       {cuisine.map((recipe) => {
         return (
           <Card key={recipe.id}>
-            <Link to={`/recipes/${recipe.id}`}>
+            <Link to={`/recipe/${recipe.id}`}>
               <img src={recipe.imageURL} alt={recipe.name} />
               <h4>{recipe.name}</h4>
             </Link>

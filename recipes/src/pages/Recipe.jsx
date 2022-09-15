@@ -99,6 +99,8 @@ const DetailWrapper = styled.div`
   img {
     border-radius: 0.5rem;
     box-shadow: 5px 5px 4px 2px rgba(0, 0, 0, 0.27);
+    width:500px;
+    height:500px;
   }
 
   @media (max-width: 1400px) {
