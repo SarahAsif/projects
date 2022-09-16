@@ -3,63 +3,57 @@ import Pages from "./pages/Pages";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import Search from "./components/Search";
 import styled from "styled-components";
-import { GiTeapotLeaves } from "react-icons/gi";
-import { BsFacebook, BsLinkedin } from "react-icons/bs";
-import { AiFillTwitterCircle } from "react-icons/ai";
-import { FaInstagramSquare } from "react-icons/fa";
-import { links, social } from "./data";
 import "./App.css";
-import Hot from "./hot.png";
+import LoadingSpinner from "./LoadingSpinner";
+import { useState } from "react";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const handleFetch = () => {
+    setIsLoading(true);
+    fetch("/")
+      .then((respose) => {
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(true);
+      });
+  };
+  const renderUser = <div>Loading</div>;
   return (
-    <div className="App">
-      <Router>
-        <Nav>
-          <Logo to="/">
-            <img src={Hot} />
-          </Logo>
-          <Card>
-            {/* <BsFacebook to="https://web.facebook.com/" />
-            <BsLinkedin to="/linkedin.com" />
-            <AiFillTwitterCircle to="/twitter.com" />
-            <FaInstagramSquare to="/instagram.com" /> */}
+    <>
+      {isLoading ? <App /> : renderUser}
 
-            {social.map((socialIcon) => {
-              const { id, url, icon } = socialIcon;
-              return (
-                <span key={id}>
-                  <a href={url}>{icon}</a>
-                </span>
-              );
-            })}
-          </Card>
-        </Nav>
-        <Card2>
-          <Search />
-          <Category />
-        </Card2>
-        <Pages />
-      </Router>
-      <footer>Made By Sarah Asif</footer>
-    </div>
+      <div className="App">
+        <Router basename="/">
+          <Nav>
+            <Logo to="/">
+              <h1>SARAH's COOKBOOK</h1>
+            </Logo>
+          </Nav>
+          <Card2>
+            <Search />
+            <Category />
+          </Card2>
+          <Pages />
+        </Router>
+        <footer>Made By Sarah Asif</footer>
+      </div>
+    </>
   );
 }
 
 const Logo = styled(Link)`
   text-decoration: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 400;
   font-family: sans-serif;
-  img {
-    width: 3rem;
-    height: 3rem;
-  }
+  text-align: center;
 `;
 
 const Nav = styled.div`
-  padding: 0.5rem 3rem;
+  padding: 1.5rem 3rem;
   width: 100%;
   background: linear-gradient(to right, #f27121, #e94057);
 
@@ -84,9 +78,11 @@ const Card = styled.div`
 `;
 const Card2 = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   align-text: center;
+  flex-direction: column;
+  margin: 2rem;
 `;
 
 export default App;
