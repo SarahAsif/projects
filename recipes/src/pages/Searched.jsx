@@ -8,7 +8,7 @@ function Searched() {
 
 	const getSearched = async name => {
 		const data = await fetch(
-			`https://json.nitroxis.com/recipes?${params.search}`
+			`https://json.nitroxis.com/recipes?name_like=${params.search}`
 		);
 		const recipes = await data.json();
 		setSearchedRecipes(recipes);

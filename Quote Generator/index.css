@@ -1,0 +1,131 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+
+}
+.container{
+    background-color: #FBF9FB;
+    width: 35em;
+    height: 19rem;
+    margin: 2rem;
+    padding: 3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    box-shadow: 1px 4px 11px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 4px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 4px 11px 0px rgba(0,0,0,0.75);
+    position: relative;
+}
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    font-size: 1.6rem;
+
+}
+button{
+    background-color: black;
+    color: white;
+    padding: 1rem;
+}
+#authors{
+    text-align: right;
+    font-size: 1.5rem;
+    font-style: italic;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+@-webkit-keyframes mask-move {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(129px);
+    }
+  }
+  @keyframes mask-move {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(410px);
+    }
+  }
+  @-webkit-keyframes mask-inner-move {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-410px);
+    }
+  }
+  @keyframes mask-inner-move {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-410px);
+    }
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+    
+  body {
+    background: #fcb23c;
+    
+  }
+  
+  .focus {
+    font-size: 3rem;
+    color: white;
+    letter-spacing: 0.2rem;
+    position: relative;
+    width: 450px;
+    
+  }
+  .focus:before {
+    content: "RANDOM_QUOTES";
+   }
+  .focus:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: calc(100% + 8px);
+    top: -4px;
+    left: 0;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    -webkit-animation: mask-move 2s linear infinite alternate;
+            animation: mask-move 2s linear infinite alternate;
+        
+  }
+  .focus--mask {
+    overflow: hidden;
+    position: absolute;
+    width: 50px;
+    filter: blur(4px);
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: wheat;
+    opacity: 0.4;
+    -webkit-animation: mask-move 2s linear infinite alternate;
+            animation: mask-move 2s linear infinite alternate;
+  }
+  .focus--mask-inner {
+    -webkit-animation: mask-inner-move 2s linear infinite alternate;
+            animation: mask-inner-move 2s linear infinite alternate;
+            
+  }
+  
