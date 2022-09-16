@@ -6574,9 +6574,41 @@ const arrayQuotes = [
     author: "Tom Jackson",
   },
 ];
+const colorsArray = [
+  "#3D9970",
+  "#001f3f",
+  "#39CCCC",
+  "#2ECC40",
+  "#6B5B95",
+  "#92A8D1",
+  "#d293a3",
+  "#34568B",
+  "#955251",
+  "#009B77",
+  "#DD4124",
+  "#D65076",
+  "#45B8AC",
+  "#EFC050",
+  "#5B5EA6",
+  "#9B2335",
+  "#DFCFBE",
+  "#55B4B0",
+  "#E15D44",
+  "#7FCDCD",
+  "#BC243C",
+  "#98B4D4",
+  "#C3447A",
+  "#F5DF4D",
+  "#A0DAA9",
+  "#E9897E",
+  "#D2386C",
+  "#9A8B4F",
+  "#00A170",
+];
 
 const newQuote = () => {
   const random = Math.floor(Math.random() * arrayQuotes.length);
+  const colors = Math.floor(Math.random() * colorsArray.length);
   const quote = arrayQuotes[random].text;
   const auth = arrayQuotes[random].author;
   if (auth == null) {
@@ -6584,4 +6616,5 @@ const newQuote = () => {
   }
   quoteDisplay.innerHTML = quote;
   authors.innerHTML = "~ " + auth;
+  document.body.style.backgroundColor = colorsArray[colors];
 };
