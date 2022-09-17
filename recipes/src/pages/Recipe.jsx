@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 
 function Recipe() {
   let params = useParams();
-
+  
+  const [isLoading, setIsLoading] = useState(true);
   const [details, setDetails] = useState();
   const [activeTab, setActiveTab] = useState("instructions");
 
@@ -13,6 +14,7 @@ function Recipe() {
       const data = await fetch(
         `https://json.nitroxis.com/recipes/${params.name}`);
       const detailData = await data.json();
+      setIsLoading(false);
       setDetails(detailData);
     };
     fetchDetails();
@@ -20,10 +22,13 @@ function Recipe() {
 
   return (
     <DetailWrapper>
+     {isLoading ?
+      <div>Loading ... </div> :
       <div className="imageWrapper">
         <h2>{details?.name}</h2>
         <img src={details?.imageURL} alt="" />
       </div>
+      }
       <Info>
         <div style={{display: 'flex'}}>
         <Button
