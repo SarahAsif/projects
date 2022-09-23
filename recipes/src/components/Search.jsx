@@ -38,7 +38,7 @@ const FormStyle = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:1
+    margin-top:1rem
   }
   input {
     border: none;
@@ -50,6 +50,8 @@ const FormStyle = styled.form`
     border-radius: 0.5rem;
     outline: none;
     width: 90%;
+    padding-left:5rem;
+    
   }
 
   svg {

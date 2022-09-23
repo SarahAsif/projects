@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import * as ReactBootStrap from 'react-bootstrap'
+import Spinner from '../Spinner';
+
 
 function Searched() {
 	const [searchedRecipes, setSearchedRecipes] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+
 	let params = useParams();
 
 	const getSearched = async name => {
@@ -12,6 +17,7 @@ function Searched() {
 		);
 		const recipes = await data.json();
 		setSearchedRecipes(recipes);
+		setIsLoading(false);
 	};
 
 	useEffect(() => {
@@ -23,10 +29,11 @@ function Searched() {
 			{searchedRecipes.map(recipe => {
 				return (
 					<Link to={`/recipe/${recipe.id}`}>
+						        {isLoading ? <Spinner/>:
 						<Card key={recipe.id}>
 							<img src={recipe.imageURL} alt={recipe.name} />
 							<h4>{recipe.name}</h4>
-						</Card>
+						</Card>}
 					</Link>
 				);
 			})}
@@ -40,7 +47,6 @@ flex-wrap: wrap;
 margin:3rem;
 justify-content: space-around;
 align-items:center;
-
 `;
 
 const Card = styled.div`

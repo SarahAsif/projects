@@ -4,28 +4,13 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import Search from "./components/Search";
 import styled from "styled-components";
 import "./App.css";
-import LoadingSpinner from "./LoadingSpinner";
 import { useState } from "react";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const handleFetch = () => {
-    setIsLoading(true);
-    fetch("/")
-      .then((respose) => {
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setIsLoading(true);
-      });
-  };
-  const renderUser = <div>Loading</div>;
   return (
     <>
-      {isLoading ? <App /> : renderUser}
-
       <div className="App">
-        <Router basename="/">
+        <Router basename="/recipes">
           <Nav>
             <Logo to="/">
               <h1>SARAH's COOKBOOK</h1>
@@ -50,6 +35,10 @@ const Logo = styled(Link)`
   font-weight: 400;
   font-family: sans-serif;
   text-align: center;
+  overflow: hidden;
+  &:hover {
+    color: white;
+  }
 `;
 
 const Nav = styled.div`
@@ -59,7 +48,7 @@ const Nav = styled.div`
 
   svg {
     color: black;
-    font-size: 3rem;
+    font-size: rem;
   }
 `;
 const Card = styled.div`

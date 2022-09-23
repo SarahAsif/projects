@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from "react-router-dom";
+import * as ReactBootStrap from 'react-bootstrap'
+import Spinner from "../Spinner";
+
 
 function Veggie() {
-  const numberOfRandomRecipes = 9;
-
+  const [isLoading, setIsLoading] = useState(true);
   const [veggie, setVeggie] = useState([]);
 
   useEffect(() => {
@@ -22,6 +24,8 @@ function Veggie() {
       const data = await api.json();
 
       setVeggie(data);
+      setIsLoading(false);
+
     } catch (err) {
       console.log(err);
     }
@@ -32,6 +36,8 @@ function Veggie() {
     <div>
       <Wrapper>
         <h3>Our Vegetarian Picks</h3>
+        {isLoading ? <Spin><Spinner/></Spin>:
+
         <Splide
           options={{
             perPage: 3,
@@ -62,7 +68,7 @@ function Veggie() {
               </SplideSlide>
             );
           })}
-        </Splide>
+        </Splide>}
       </Wrapper>
     </div>
   );
@@ -78,6 +84,13 @@ const Wrapper = styled.div`
     }
   }
 `;
+const Spin = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+overflow:hidden;
+
+`
 const Card = styled.div`
   min-height: 25rem;
   border-radius: 0.5rem;

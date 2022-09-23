@@ -1,25 +1,35 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
+import Spinner from "../Spinner";
+
+
 
 function Recipe() {
   let params = useParams();
 
   const [details, setDetails] = useState();
   const [activeTab, setActiveTab] = useState("instructions");
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
-    const fetchDetails = async () => {
-      const data = await fetch(
-        `https://json.nitroxis.com/recipes/${params.name}`);
-      const detailData = await data.json();
-      setDetails(detailData);
-    };
     fetchDetails();
   }, [params.name]);
+  const fetchDetails = async () => {
+    const data = await fetch(
+      `https://json.nitroxis.com/recipes/${params.name}`);
+    const detailData = await data.json();
+    setDetails(detailData);
+    setIsLoading(false);
+
+  };
 
   return (
+    <>
+    {isLoading ? <Spin><Spinner/></Spin>:
     <DetailWrapper>
+    
       <div className="imageWrapper">
         <h2>{details?.name}</h2>
         <img src={details?.imageURL} alt="" />
@@ -52,17 +62,21 @@ function Recipe() {
           </ul>
         )}
       </Info>
-    </DetailWrapper>
+    </DetailWrapper>}
+    </>
   );
 }
 
 const DetailWrapper = styled.div`
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  margin-left:3rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  padding-left:3rem;
   display: flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-direction:row;
   color: var(--gray-800);
-
+  overflow:hidden;
   .active {
     color: white;
   }
@@ -70,11 +84,13 @@ const DetailWrapper = styled.div`
   p {
     color: white;
     line-height: 1.25rem;
+    margin:1rem;
   }
 
   h2 {
     margin-bottom: 2rem;
     color:white;
+    overflow:hidden;
   }
   a{
     color:gray;
@@ -90,43 +106,39 @@ const DetailWrapper = styled.div`
     margin-top: 0.5rem;
     font-size: 1rem;
     line-height: 1.25rem;
-
-    @media (max-width: 865px) {
-      margin-left: 1rem;
-    }
   }
-
+  .imageWrapper{
+    width:50%;
+  }
   img {
     border-radius: 0.5rem;
     box-shadow: 5px 5px 4px 2px rgba(0, 0, 0, 0.27);
-    width:500px;
-    height:500px;
-  }
-
-  @media (max-width: 1400px) {
-    img {
-      width: 450px;
+    width: 30rem;
+    height: 30rem; 
     }
-  }
-
+   
   @media (max-width: 1120px) {
     img {
-      width: 350px;
+       
+  width: 100%;
+  height: auto; 
     }
   }
 
   @media (max-width: 865px) {
     flex-direction: column;
-
+    text-align:center;
     img {
-      width: 100%;
+     
+  width: 100%;
+  height: auto; 
     }
-
-    .imageWrapper {
-      display: flex;
-      flex-direction: column;
-      justifycontent: center;
-      align-items: center;
+  }
+  @media (max-width: 300px) {
+    img {
+   margin-right:1rem;
+  width: 100%;
+  height: auto; 
     }
   }
 `;
@@ -140,26 +152,25 @@ const Button = styled.button`
   margin-right: 2rem;
   font-weight: 600;
   cursor: pointer;
-
   transition: all 0.2s;
-
   &:hover {
     background: gray;
     color: var(--gray-50);
   }
 `;
-
+const Spin = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+overflow:hidden;
+`
 const Info = styled.div`
-  margin-left: 5rem;
-  display: flex;
-  justifycontent: center;
-  flex-direction: column;
-  width: 700px;
-  max-width: 100%;
+align-items:center;  
+width:50%;
+justifycontent: space-evenly;
+  flex-direction:column;
   color:white;
-  ul {
-    margin-top: 0;
-  }
+  
 
   @media (max-width: 865px) {
     button {

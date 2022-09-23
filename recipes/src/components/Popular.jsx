@@ -3,34 +3,37 @@ import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from "react-router-dom";
-import Err from "../pages/Err";
+import * as ReactBootStrap from 'react-bootstrap'
+import Spinner from "../Spinner";
+
 
 function Popular() {
-  const numberOfRandomRecipes = 9;
-
   const [popular, setPopular] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getPopular();
-  }, []);
 
+  },[]);
   const getPopular = async () => {
 
-      try {
-        const api = await fetch(
-          `https://json.nitroxis.com/recipes/`);
-        const data = await api.json();
-
-        setPopular(data);
-      } catch (err) {
-        return (<Err/>);
-      }
-  };
+    try {
+      const api = await fetch(`https://json.nitroxis.com/recipes/`);
+      const data = await api.json();
+      setPopular(data);
+      setIsLoading(false);
+    } catch (err) {
+      return (err);
+    }
+;
+  }
 
   return (
+ <>
     <div>
       <Wrapper>
         <h3>Popular picks</h3>
+        {isLoading ? <Spin><Spinner/></Spin>:
         <Splide
           options={{
             perPage: 4,
@@ -62,24 +65,33 @@ function Popular() {
               </SplideSlide>
             );
           })}
-        </Splide>
+        </Splide>}
       </Wrapper>
     </div>
+    </>
   );
 }
 
 const Wrapper = styled.div`
   margin-left: 3rem;
   margin-right: 3rem;
-
+  
   @media (max-width: 768px) {
     h3 {
       font-size: 1rem;
     }
   }
 `;
+const Spin = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+overflow:hidden;
+
+`
 const Card = styled.div`
   min-height: 25rem;
+
   border-radius: 0.5rem;
   overflow: hidden;
   position: relative;
@@ -90,7 +102,6 @@ const Card = styled.div`
 
   img {
     position: absolute;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;

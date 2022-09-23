@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import * as ReactBootStrap from 'react-bootstrap'
 import { Link, useParams } from "react-router-dom";
+import Spinner from "../Spinner";
 
 function Cuisine() {
   const [cuisine, setCuisine] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   let params = useParams();
 
@@ -14,14 +17,17 @@ function Cuisine() {
     );
     const recipes = await data.json();
     setCuisine(recipes);
+    setIsLoading(false);
+
   };
 
   useEffect(() => {
     getCuisine(params.type);
-    console.log(params.type);
   }, [params.type]);
 
   return (
+   <Spin> {isLoading ? <Spinner/>: 
+  
     <Grid
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
@@ -38,7 +44,7 @@ function Cuisine() {
           </Card>
         );
       })}
-    </Grid>
+    </Grid>}</Spin>
   );
 }
 
@@ -53,12 +59,18 @@ const Grid = styled(motion.div)`
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 `;
-
+const Spin = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+overflow:hidden;
+`
 const Card = styled.div`
   img {
     width: 300px;
     border-radius: 1rem;
     height:300px;
+    margin:2rem;
   }
 
   a {
