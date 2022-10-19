@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "@fontsource/comfortaa";
 import { ReactComponent as svg } from "./j2.svg";
 import footer from "./p3.png";
 
+const getLocalItmes = () => {
+  let emailvar = localStorage.getItem("Email");
+
+  if (emailvar) {
+    return JSON.parse(localStorage.getItem("Email"));
+  } else {
+    return [];
+  }
+};
 function App() {
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(getLocalItmes());
   const [passwordError, setpasswordError] = useState("");
   const [emailError, setemailError] = useState("");
 
@@ -41,10 +50,9 @@ function App() {
     e.preventDefault();
     handleValidation();
   };
-  localStorage.setItem("Email", JSON.stringify(email));
-  let emailvar = localStorage.getItem("Email");
-  let emailvarup = JSON.parse(emailvar);
-  console.log(emailvarup);
+  useEffect(() => {
+    localStorage.setItem("Email", JSON.stringify(email));
+  }, [email]);
 
   return (
     <div className="App">
@@ -75,6 +83,7 @@ function App() {
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
                     onChange={(event) => setEmail(event.target.value)}
+                    value={email}
                   />
                   {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
                     <path d="M2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12M17,12L12,7V10H8V14H12V17L17,12Z" />
