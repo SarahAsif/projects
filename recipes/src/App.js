@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div className="App">
-        <Router basename="/recipes">
+        <Router basename="/">
           <Nav>
             <Logo to="/">
               <h1>SARAH's COOKBOOK</h1>
