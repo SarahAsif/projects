@@ -9,10 +9,10 @@ import Star from "../images/star.png";
 const Chart = () => {
   return (
     <div className="pt-52 max-w-100">
-      <div className="ml-40 pt-20 flex flex-row w-100">
+      <div className="ml-40 pt-20 flex lg:flex-row flex-col w-100">
         <div className="max-w-lg">
           <h1 className="font-semibold text-5xl leading-normal">
-            Rank the Chart and Become the{" "}
+            Rank the Chart and Become the
             <span className="football">Best in Your City</span>
           </h1>
         </div>
