@@ -17,7 +17,6 @@ function Cuisine() {
     const recipes = await data.json();
     setCuisine(recipes);
     setIsLoading(false);
-
   };
 
   useEffect(() => {
@@ -25,51 +24,56 @@ function Cuisine() {
   }, [params.type]);
 
   return (
-   <Spin> {isLoading ? <Spinner/>: 
-  
-    <Grid
-      animate={{ opacity: 1 }}
-      initial={{ opacity: 0 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      {cuisine.map((recipe) => {
-        return (
-          <Card key={recipe.id}>
-            <Link to={`/recipe/${recipe.id}`}>
-              <img src={recipe.imageURL} alt={recipe.name} />
-              <h4>{recipe.name}</h4>
-            </Link>
-          </Card>
-        );
-      })}
-    </Grid>}</Spin>
+    <Spin>
+      {" "}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Grid
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {cuisine.map((recipe) => {
+            return (
+              <Card key={recipe.id}>
+                <Link to={`/recipe/${recipe.id}`}>
+                  <img src={recipe.imageURL} alt={recipe.name} />
+                  <h4>{recipe.name}</h4>
+                </Link>
+              </Card>
+            );
+          })}
+        </Grid>
+      )}
+    </Spin>
   );
 }
 
 const Grid = styled(motion.div)`
-  text-align:center;
-  display:flex;
+  text-align: center;
+  display: flex;
   flex-wrap: wrap;
-  margin:3rem;
+  margin: 3rem;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
   @media (max-width: 865px) {
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 `;
 const Spin = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-overflow:hidden;
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`;
 const Card = styled.div`
   img {
     width: 300px;
     border-radius: 1rem;
-    height:300px;
-    margin:2rem;
+    height: 300px;
+    margin: 2rem;
   }
 
   a {
@@ -77,7 +81,7 @@ const Card = styled.div`
   }
 
   h4 {
-    margin:1rem;
+    margin: 1rem;
   }
 `;
 

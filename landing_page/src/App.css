@@ -3,7 +3,9 @@ body {
   background-color: #FAFAFA;
 }
 
-.App {}
+.App {
+  width: 100%;
+}
 
 .logo {
   width: 23px;
@@ -24,7 +26,6 @@ body {
 .small {
   right: 450px;
 }
-
 .svg_icons {
   width: 45px;
   height: 45px;
@@ -78,3 +79,17 @@ input {
   height: 60px;
   padding: 20px;
 }
+.my{
+  display: flex;
+  flex-flow: row nowrap;
+  background: red; 
+
+}
+@media (max-width: 865px) {
+
+  .my{
+    display: flex;
+    flex-flow: column wrap;
+    background: black; 
+  
+  }}
