@@ -6,6 +6,8 @@ import meal1 from "../image/meal1.png";
 import meal2 from "../image/meal2.png";
 import meal3 from "../image/meal3.png";
 import meal4 from "../image/meal4.png";
+import share from "../image/share.png";
+import heart from "../image/heart.png";
 import Button from "@mui/material/Button";
 import clsx from "clsx";
 import { IsMobileWidth } from "../utils";
@@ -86,7 +88,7 @@ function Amazing() {
         </div>
         <div
           className={clsx(
-            "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 max-w-3xl text-center gap-10",
+            "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 max-w-full text-center gap-20 justify-between",
             (mobileWidth || tabletWidth) && ""
           )}
         >
@@ -99,11 +101,11 @@ function Amazing() {
                 Lorem Ipsum Lorem Ipsum is simply and dummy text of the
                 printing.
               </div>
-              <div className="flex flex-row space-x-20">
+              <div className="flex flex-row justify-between items-center text-center w-full">
                 <div>{user.price}</div>
-                <div className="flex flex-row">
-                  <div></div>
-                  <div>icon</div>
+                <div className="flex flex-row gap-2">
+                  <img src={heart} className="w-5" />
+                  <img src={share} className="w-5" />
                 </div>
               </div>
             </div>
