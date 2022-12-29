@@ -27,7 +27,7 @@ function Home() {
             <Discount />
           </div>
           <Footer />
-          <Search />
+          {/* <Search /> */}
         </div>
       </div>
     </div>
