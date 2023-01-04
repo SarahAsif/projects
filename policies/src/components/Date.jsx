@@ -10,10 +10,9 @@ export default function Date({ label }) {
 
   return (
     <>
-      {label ? label : null}
-
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
+          label={label}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
